@@ -47,6 +47,8 @@
         .install code { color: #00d4ff; }
         footer { text-align: center; padding: 3rem 0; color: #666; font-size: 0.9rem; }
         footer a { color: #00d4ff; text-decoration: none; }
+        .free-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
+        .free-tool { background: rgba(255,255,255,0.03); border: 1px solid #333; border-radius: 12px; padding: 1.5rem; }
     </style>
 </head>
 <body>
@@ -96,35 +98,26 @@
             </form>
         </div>
 
-        <!-- Free Scanner Section -->
-        <div style="margin: 3rem 0; padding: 2rem; background: rgba(0,212,255,0.05); border: 1px solid #333; border-radius: 12px; text-align: center;">
-            <h2 style="color: #00d4ff; margin-bottom: 0.5rem;">🔍 Free Security Scanner</h2>
-            <p style="color: #888; margin-bottom: 1.5rem;">Scan your agent configs for exposed secrets, misconfigurations, and unsafe patterns.</p>
-            <div class="install">
-                <code>npx @musashimiyamoto/agent-guard scan .</code>
-            </div>
-            <p style="color: #666; font-size: 0.85rem; margin-top: 1rem;">
-                20 security rules • A-F scoring • CI/CD ready
-            </p>
-            <p style="margin-top: 1rem;">
-                <a href="https://npmjs.com/package/@musashimiyamoto/agent-guard" target="_blank" style="color: #00d4ff; font-size: 0.9rem;">View on npm →</a>
-            </p>
-        </div>
-
-        <!-- TokenShrink Section -->
-        <div style="margin: 3rem 0; padding: 2rem; background: rgba(16,185,129,0.05); border: 1px solid #1a3a2a; border-radius: 12px;">
-            <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 250px;">
-                    <h3 style="margin-bottom: 0.5rem;">
-                        <a href="https://musashimiyamoto1-cloud.github.io/tokenshrink/" style="color: #10b981; text-decoration: none;">🔬 TokenShrink</a>
-                        <span style="color: #666; font-size: 0.8rem; font-weight: normal; margin-left: 0.5rem;">FREE</span>
-                    </h3>
-                    <p style="color: #888; font-size: 0.95rem; line-height: 1.5;">Cut AI costs 50-80% with semantic retrieval + compression. FAISS + LLMLingua-2.</p>
-                    <div class="install" style="margin: 1rem 0; padding: 0.5rem 1rem;">
-                        <code style="color: #10b981;">pip install tokenshrink</code>
-                    </div>
+        <!-- Free Tools Section -->
+        <div class="free-tools">
+            <!-- Free Scanner -->
+            <div class="free-tool">
+                <h3 style="color: #00d4ff; margin-bottom: 0.5rem;">🔍 Free Scanner</h3>
+                <p style="color: #888; font-size: 0.95rem; margin-bottom: 1rem;">Security scanner for AI agent configurations. 20 rules, A-F scoring, CI/CD ready.</p>
+                <div class="install" style="margin: 0.5rem 0; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                    <code>npx @musashimiyamoto/agent-guard scan .</code>
                 </div>
-                <a href="https://musashimiyamoto1-cloud.github.io/tokenshrink/" class="cta" style="padding: 0.75rem 1.5rem; font-size: 0.95rem; background: #10b981; white-space: nowrap;">View TokenShrink →</a>
+                <a href="https://npmjs.com/package/@musashimiyamoto/agent-guard" target="_blank" style="color: #00d4ff; font-size: 0.85rem;">View on npm →</a>
+            </div>
+
+            <!-- Free Cost Saving -->
+            <div class="free-tool" style="border-color: #1a3a2a;">
+                <h3 style="color: #10b981; margin-bottom: 0.5rem;">🔬 Free Cost Saving</h3>
+                <p style="color: #888; font-size: 0.95rem; margin-bottom: 1rem;">Cut AI costs 50-80% with semantic retrieval + compression. FAISS + LLMLingua-2.</p>
+                <div class="install" style="margin: 0.5rem 0; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                    <code style="color: #10b981;">pip install tokenshrink</code>
+                </div>
+                <a href="https://musashimiyamoto1-cloud.github.io/tokenshrink/" target="_blank" style="color: #10b981; font-size: 0.85rem;">View TokenShrink →</a>
             </div>
         </div>
 
