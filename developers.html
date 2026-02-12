@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Guard - Security for AI Agents</title>
+    <meta name="description" content="Protect your AI agents from jailbreaks and unauthorized actions. Whether the model resists or complies, unauthorized actions are blocked.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+        header { text-align: center; padding: 3rem 0 1rem; }
+        h1 { 
+            font-size: 3rem; 
+            background: linear-gradient(90deg, #00d4ff, #7b2fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .cta { 
+            display: inline-block;
+            background: linear-gradient(90deg, #00d4ff, #7b2fff);
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,212,255,0.3); }
+        .install { 
+            background: #1e1e3f; 
+            border: 1px solid #333;
+            border-radius: 8px; 
+            padding: 1rem 2rem; 
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 1rem;
+            margin: 1rem auto;
+            display: inline-block;
+        }
+        .install code { color: #00d4ff; }
+        footer { text-align: center; padding: 3rem 0; color: #666; font-size: 0.9rem; }
+        footer a { color: #00d4ff; text-decoration: none; }
+        .free-tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
+        .free-tool { background: rgba(255,255,255,0.03); border: 1px solid #333; border-radius: 12px; padding: 1.5rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🛡️ Agent Guard</h1>
+        </header>
+
+        <!-- Video Section -->
+        <div style="margin: 2rem 0; text-align: center;">
+            <div style="background: #0a0a1a; border: 1px solid #333; border-radius: 12px; padding: 1rem; display: inline-block;">
+                <video width="100%" style="max-width: 700px; border-radius: 8px;" controls>
+                    <source src="agentguard-demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p style="color: #888; font-size: 1.1rem; margin-top: 1.5rem; font-style: italic;">
+                Whether the model resists or complies, unauthorized actions are blocked.
+            </p>
+            
+            <!-- Explainer Image -->
+            <div style="margin-top: 2rem;">
+                <img src="demo-explainer.jpg" alt="Demo Explainer: Attacker Output Differences" 
+                     style="max-width: 700px; width: 100%; border-radius: 8px; border: 1px solid #333;">
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div style="margin: 3rem 0; padding: 2rem; background: rgba(123,47,255,0.08); border: 1px solid #7b2fff33; border-radius: 12px;">
+            <h2 style="color: #00d4ff; margin-bottom: 0.5rem; text-align: center;">Need help staying on top of your agents?</h2>
+            <p style="color: #888; margin-bottom: 1.5rem; text-align: center;">Let's talk.</p>
+            
+            <form action="https://formsubmit.co/musashimiyamoto1@icloud.com" method="POST" style="max-width: 500px; margin: 0 auto;">
+                <input type="hidden" name="_subject" value="AgentGuard - Let's Talk">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://agentguard.co?submitted=true">
+                <div style="margin-bottom: 1rem;">
+                    <input type="email" name="email" placeholder="Your email" required
+                        style="width: 100%; padding: 0.75rem 1rem; background: #1e1e3f; border: 1px solid #333; border-radius: 8px; color: #e0e0e0; font-size: 1rem;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <input type="text" name="company" placeholder="Company (optional)"
+                        style="width: 100%; padding: 0.75rem 1rem; background: #1e1e3f; border: 1px solid #333; border-radius: 8px; color: #e0e0e0; font-size: 1rem;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <textarea name="message" placeholder="What are you building? What challenges do you face?" rows="3"
+                        style="width: 100%; padding: 0.75rem 1rem; background: #1e1e3f; border: 1px solid #333; border-radius: 8px; color: #e0e0e0; font-size: 1rem; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" class="cta" style="width: 100%; border: none; cursor: pointer;">
+                    Get in Touch
+                </button>
+            </form>
+        </div>
+
+        <!-- Free Tools Section -->
+        <div class="free-tools">
+            <!-- Free Scanner -->
+            <div class="free-tool">
+                <h3 style="color: #00d4ff; margin-bottom: 0.5rem;">🔍 Free Scanner</h3>
+                <p style="color: #888; font-size: 0.95rem; margin-bottom: 1rem;">Security scanner for AI agent configurations. 20 rules, A-F scoring, CI/CD ready.</p>
+                <div class="install" style="margin: 0.5rem 0; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                    <code>npx @musashimiyamoto/agent-guard scan .</code>
+                </div>
+                <a href="https://npmjs.com/package/@musashimiyamoto/agent-guard" target="_blank" style="color: #00d4ff; font-size: 0.85rem;">View on npm →</a>
+            </div>
+
+            <!-- Free Cost Saving -->
+            <div class="free-tool" style="border-color: #1a3a2a;">
+                <h3 style="color: #10b981; margin-bottom: 0.5rem;">🔬 Free Cost Saving</h3>
+                <p style="color: #888; font-size: 0.95rem; margin-bottom: 1rem;">Cut AI costs 50-80% with semantic retrieval + compression. FAISS + LLMLingua-2.</p>
+                <div class="install" style="margin: 0.5rem 0; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                    <code style="color: #10b981;">pip install tokenshrink</code>
+                </div>
+                <a href="https://musashimiyamoto1-cloud.github.io/tokenshrink/" target="_blank" style="color: #10b981; font-size: 0.85rem;">View TokenShrink →</a>
+            </div>
+        </div>
+
+        <footer>
+            <p style="margin-bottom: 0.5rem; color: #888;">
+                <strong style="color: #e0e0e0;">Musashi Labs</strong>
+            </p>
+            <p>
+                <a href="https://github.com/MusashiMiyamoto1-cloud/agent-guard">GitHub</a> · 
+                <a href="https://x.com/MMiyamoto45652">@Musashi</a>
+            </p>
+        </footer>
+    </div>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "775d666b10f94ecc95c628a26b9a70ff"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
