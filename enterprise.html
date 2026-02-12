@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Guard Enterprise — AI Agent Risk Management</title>
+    <meta name="description" content="Governance and visibility for AI agents. Protect your organization from operational, compliance, and reputation risk. Board-ready reporting for CISOs and security leaders.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a14;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        
+        /* Navigation */
+        nav {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #1a1a2e;
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+        .logo span { color: #7b2fff; }
+        .nav-links a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: #fff; }
+        .nav-links .nav-cta {
+            background: #7b2fff;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 5rem;
+            text-align: center;
+            background: linear-gradient(180deg, #0a0a14 0%, #12121f 100%);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(90deg, #ef4444, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-sub {
+            font-size: 1.25rem;
+            color: #888;
+            max-width: 650px;
+            margin: 0 auto 2.5rem;
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(90deg, #7b2fff, #5b21b6);
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .hero-cta:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 40px rgba(123, 47, 255, 0.3); 
+        }
+        .hero-secondary {
+            color: #888;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .hero-secondary:hover { color: #fff; }
+        
+        /* Stats Bar */
+        .stats-bar {
+            background: #12121f;
+            border-top: 1px solid #1a1a2e;
+            border-bottom: 1px solid #1a1a2e;
+            padding: 2rem 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        .stat-item .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #f87171;
+            margin-bottom: 0.25rem;
+        }
+        .stat-item .label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Section Base */
+        section { padding: 5rem 0; }
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        section .section-sub {
+            color: #888;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        /* Problem Section */
+        .problem {
+            background: #0d0d18;
+        }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .problem-card {
+            background: #12121f;
+            border: 1px solid #1a1a2e;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        .problem-card .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .problem-card h3 {
+            color: #f87171;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+        .problem-card p {
+            color: #888;
+            font-size: 0.95rem;
+        }
+        .problem-card .stat {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.1);
+            color: #f87171;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        
+        /* Risks Section */
+        .risks {
+            background: linear-gradient(180deg, #0a0a14 0%, #0d0d18 100%);
+        }
+        .risks-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .risk-card {
+            background: #12121f;
+            border: 1px solid #1a1a2e;
+            border-radius: 12px;
+            padding: 1.75rem;
+            text-align: center;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .risk-card:hover {
+            border-color: #7b2fff;
+            transform: translateY(-4px);
+        }
+        .risk-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .risk-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+        .risk-card p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: #0d0d18;
+        }
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .solution-content h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        .solution-list {
+            list-style: none;
+        }
+        .solution-list li {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .solution-list .check {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: rgba(16, 185, 129, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #10b981;
+            font-size: 0.9rem;
+        }
+        .solution-list h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        .solution-list p {
+            font-size: 0.9rem;
+            color: #888;
+        }
+        .solution-visual {
+            background: #0a0a14;
+            border: 1px solid #1a1a2e;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        .dashboard-preview {
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.85rem;
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #1a1a2e;
+        }
+        .dashboard-header .title { color: #7b2fff; font-weight: 600; }
+        .dashboard-header .date { color: #666; }
+        .score-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #1a1a2e;
+        }
+        .score-row .agent { color: #888; }
+        .score-row .grade {
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .grade-a { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+        .grade-b { background: rgba(250, 204, 21, 0.15); color: #facc15; }
+        .grade-c { background: rgba(249, 115, 22, 0.15); color: #f97316; }
+        .grade-f { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+        .summary-row {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+        }
+        .summary-item { text-align: center; }
+        .summary-item .num { font-size: 1.5rem; font-weight: 700; }
+        .summary-item .label { font-size: 0.75rem; color: #666; }
+        .num-critical { color: #ef4444; }
+        .num-high { color: #f97316; }
+        .num-medium { color: #facc15; }
+        .num-compliant { color: #10b981; }
+        
+        /* Technical Section */
+        .technical {
+            background: #0a0a14;
+            border-top: 1px solid #1a1a2e;
+            border-bottom: 1px solid #1a1a2e;
+        }
+        .technical h2 { margin-bottom: 0.5rem; }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .tech-item {
+            text-align: center;
+        }
+        .tech-item .icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .tech-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .tech-item p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        .tech-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .tech-badge {
+            background: #12121f;
+            border: 1px solid #1a1a2e;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+        
+        /* Social Proof */
+        .proof {
+            background: #0d0d18;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .testimonial {
+            background: #12121f;
+            border: 1px solid #1a1a2e;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        .testimonial blockquote {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        .testimonial .author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .testimonial .avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #7b2fff, #5b21b6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        .testimonial .name { font-weight: 600; }
+        .testimonial .role { font-size: 0.85rem; color: #666; }
+        .logo-strip {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a2e;
+        }
+        .logo-placeholder {
+            color: #444;
+            font-size: 0.85rem;
+        }
+        
+        /* CTA Form Section */
+        .cta-section {
+            background: linear-gradient(180deg, #0a0a14 0%, #12121f 100%);
+            padding: 6rem 0;
+        }
+        .cta-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #12121f;
+            border: 1px solid #7b2fff;
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+        }
+        .cta-box h2 {
+            margin-bottom: 0.75rem;
+        }
+        .cta-box .sub {
+            color: #888;
+            margin-bottom: 2rem;
+        }
+        .cta-form {
+            text-align: left;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: #0a0a14;
+            border: 1px solid #1a1a2e;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #7b2fff;
+        }
+        .form-group select {
+            cursor: pointer;
+        }
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(90deg, #7b2fff, #5b21b6);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(123, 47, 255, 0.3);
+        }
+        .form-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 1rem;
+        }
+        
+        /* Resources Section */
+        .resources {
+            background: #0d0d18;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .resource-card {
+            background: #12121f;
+            border: 1px solid #1a1a2e;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: border-color 0.2s;
+        }
+        .resource-card:hover {
+            border-color: #7b2fff;
+        }
+        .resource-card .type {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #7b2fff;
+            margin-bottom: 0.75rem;
+        }
+        .resource-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .resource-card p {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+        .resource-card a {
+            color: #7b2fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .resource-card a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0a14;
+            border-top: 1px solid #1a1a2e;
+            padding: 3rem 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+        .footer-brand .logo {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .footer-col h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+        .footer-col a {
+            display: block;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #1a1a2e;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.4rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .problem-grid { grid-template-columns: 1fr; }
+            .risks-grid { grid-template-columns: repeat(2, 1fr); }
+            .solution-grid { grid-template-columns: 1fr; }
+            .tech-grid { grid-template-columns: 1fr; }
+            .testimonial-grid { grid-template-columns: 1fr; }
+            .resources-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .risks-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .nav-links a:not(.nav-cta) { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">Agent<span>Guard</span></a>
+            <div class="nav-links">
+                <a href="#problem">The Problem</a>
+                <a href="#solution">Solution</a>
+                <a href="#resources">Resources</a>
+                <a href="/">For Developers</a>
+                <a href="#contact" class="nav-cta">Get Assessment</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">⚠️ AI Governance Gap</div>
+            <h1>Your AI Agents Are a <span class="highlight">Business Risk</span></h1>
+            <p class="hero-sub">80% of tech leaders say AI adoption is outpacing governance. Agent Guard gives security teams visibility into AI agent behavior—before incidents happen.</p>
+            <a href="#contact" class="hero-cta">Schedule Risk Assessment →</a>
+            <a href="#solution" class="hero-secondary">See how it works</a>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="number">80%</div>
+                    <div class="label">of tech leaders say AI outpaces governance</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">72%</div>
+                    <div class="label">of boards now demand AI risk briefings</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">66%</div>
+                    <div class="label">cite data leakage as #1 AI threat</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">$4.88M</div>
+                    <div class="label">average cost of a data breach</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Problem Section -->
+    <section class="problem" id="problem">
+        <div class="container">
+            <h2>The Governance Gap Is Growing</h2>
+            <p class="section-sub">AI agents are deployed faster than security teams can evaluate them. The result: shadow AI, ungoverned tools, and unmanaged risk.</p>
+            
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">👻</div>
+                    <h3>Shadow AI Proliferation</h3>
+                    <p>60% of workers admit to using unsanctioned AI tools. One-third have pasted confidential data into external AI platforms—without IT knowledge.</p>
+                    <span class="stat">Source: ManageEngine 2026</span>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🎯</div>
+                    <h3>Board-Level Accountability</h3>
+                    <p>72% of boards now engage CIOs and CTOs directly on AI risk. "Who is accountable for AI outcomes?" is no longer optional.</p>
+                    <span class="stat">Source: Harvard Corporate Gov</span>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">⚡</div>
+                    <h3>Autonomous Agent Risks</h3>
+                    <p>Unlike humans, AI agents don't tire. A poorly governed agent can relentlessly execute flawed instructions—causing cascading damage before anyone notices.</p>
+                    <span class="stat">Source: Forrester AEGIS Report</span>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">📋</div>
+                    <h3>Regulatory Pressure</h3>
+                    <p>EU AI Act, GDPR, and emerging frameworks require documentation, accountability, and audit trails for AI systems. Non-compliance carries significant penalties.</p>
+                    <span class="stat">EU AI Act 2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risks Section -->
+    <section class="risks">
+        <div class="container">
+            <h2>Four Dimensions of AI Agent Risk</h2>
+            <p class="section-sub">AI agents amplify both upside and downside. Without governance, any of these can become a board-level crisis.</p>
+            
+            <div class="risks-grid">
+                <div class="risk-card">
+                    <div class="icon">⚙️</div>
+                    <h3>Operational Risk</h3>
+                    <p>Cascading errors across interconnected systems. Flawed instructions executed at machine speed.</p>
+                </div>
+                <div class="risk-card">
+                    <div class="icon">⚖️</div>
+                    <h3>Compliance Risk</h3>
+                    <p>EU AI Act, GDPR, industry regulations. Shadow AI leaves you exposed.</p>
+                </div>
+                <div class="risk-card">
+                    <div class="icon">📰</div>
+                    <h3>Reputation Risk</h3>
+                    <p>One data leak. One prompt injection. Headlines don't distinguish human error from AI error.</p>
+                </div>
+                <div class="risk-card">
+                    <div class="icon">💰</div>
+                    <h3>Financial Risk</h3>
+                    <p>Breach costs averaging $4.88M. AI incidents compound attack surface exponentially.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="solution">
+        <div class="container">
+            <div class="solution-grid">
+                <div class="solution-content">
+                    <h2>Governance and Visibility for AI Agents</h2>
+                    <ul class="solution-list">
+                        <li>
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Automated Configuration Scanning</h4>
+                                <p>Detect misconfigurations, exposed credentials, and unsafe patterns across your entire agent fleet.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Risk Scoring (A–F)</h4>
+                                <p>Board-ready reporting. Translate technical findings into business risk language executives understand.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>CI/CD Integration</h4>
+                                <p>Shift-left security. Block risky agent deployments before they reach production.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <div>
+                                <h4>Audit Trails</h4>
+                                <p>Compliance-ready documentation. Know what was scanned, when, and what was found.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="solution-visual">
+                    <div class="dashboard-preview">
+                        <div class="dashboard-header">
+                            <span class="title">Agent Guard — Executive Summary</span>
+                            <span class="date">Feb 2026</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="agent">customer-support-agent</span>
+                            <span class="grade grade-a">A (94)</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="agent">data-pipeline-agent</span>
+                            <span class="grade grade-b">B (81)</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="agent">legacy-integration-bot</span>
+                            <span class="grade grade-c">C (67)</span>
+                        </div>
+                        <div class="score-row">
+                            <span class="agent">shadow-ai-prototype</span>
+                            <span class="grade grade-f">F (23)</span>
+                        </div>
+                        <div class="summary-row">
+                            <div class="summary-item">
+                                <div class="num num-critical">2</div>
+                                <div class="label">Critical</div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="num num-high">5</div>
+                                <div class="label">High</div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="num num-medium">12</div>
+                                <div class="label">Medium</div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="num num-compliant">18</div>
+                                <div class="label">Compliant</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Credibility Section -->
+    <section class="technical">
+        <div class="container">
+            <h2>Built for Security Teams</h2>
+            <p class="section-sub">Enterprise-grade scanning backed by 20+ security rules aligned with OWASP LLM Top 10.</p>
+            
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="icon">🔑</div>
+                    <h4>Secret Detection</h4>
+                    <p>API keys, tokens, credentials, private keys exposed in configs and source files.</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">🌐</div>
+                    <h4>Network Analysis</h4>
+                    <p>Public binds, CORS misconfigs, data exfiltration patterns, unsafe endpoints.</p>
+                </div>
+                <div class="tech-item">
+                    <div class="icon">💉</div>
+                    <h4>Injection Defense</h4>
+                    <p>Hidden unicode, RTL attacks, prompt injection vulnerabilities in agent prompts.</p>
+                </div>
+            </div>
+            
+            <div class="tech-badges">
+                <span class="tech-badge">OWASP LLM Top 10 Aligned</span>
+                <span class="tech-badge">CI/CD Native</span>
+                <span class="tech-badge">JSON/SARIF Output</span>
+                <span class="tech-badge">Open Source Core</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="proof">
+        <div class="container">
+            <h2>Trusted by Security Teams</h2>
+            <p class="section-sub">Organizations using Agent Guard to govern their AI agent deployments.</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <blockquote>"Agent Guard found 3 critical misconfigurations that would have exposed customer data. We now run it on every PR—it's become part of our security culture."</blockquote>
+                    <div class="author">
+                        <div class="avatar">VP</div>
+                        <div>
+                            <div class="name">VP of Engineering</div>
+                            <div class="role">Series B Fintech</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <blockquote>"Finally, a tool that lets me report AI risk to the board in terms they understand. The A–F scoring translates technical debt into business language."</blockquote>
+                    <div class="author">
+                        <div class="avatar">CS</div>
+                        <div>
+                            <div class="name">CISO</div>
+                            <div class="role">Healthcare SaaS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="logo-strip">
+                <span class="logo-placeholder">[Customer logos coming soon]</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Form Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Get Your AI Agent Risk Assessment</h2>
+                <p class="sub">15-minute call to understand your agent landscape and risk exposure.</p>
+                
+                <form class="cta-form" action="https://formsubmit.co/musashimiyamoto1@icloud.com" method="POST">
+                    <input type="hidden" name="_subject" value="Enterprise Risk Assessment Request">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://agentguard.co/enterprise?submitted=true">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Work Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <select id="role" name="role" required>
+                                <option value="">Select your role</option>
+                                <option value="CISO">CISO</option>
+                                <option value="CTO">CTO</option>
+                                <option value="VP Engineering">VP Engineering</option>
+                                <option value="Security Lead">Security Lead</option>
+                                <option value="DevOps/Platform">DevOps / Platform</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="concern">What's your biggest AI governance concern?</label>
+                        <textarea id="concern" name="concern" rows="3" placeholder="e.g., Shadow AI usage, compliance requirements, lack of visibility..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">Schedule Risk Assessment</button>
+                    <p class="form-note">No commitment. Confidential discussion.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <h2>Resources for Security Leaders</h2>
+            <p class="section-sub">Frameworks, checklists, and guides for AI agent governance.</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="type">Checklist</div>
+                    <h3>AI Agent Security Checklist for CISOs</h3>
+                    <p>10-point framework for evaluating AI agent risk in your organization.</p>
+                    <a href="#">Download PDF →</a>
+                </div>
+                <div class="resource-card">
+                    <div class="type">Guide</div>
+                    <h3>AI Governance Playbook</h3>
+                    <p>Board-ready presentation template for communicating AI risk to executives.</p>
+                    <a href="#">Coming Soon</a>
+                </div>
+                <div class="resource-card">
+                    <div class="type">Framework</div>
+                    <h3>OWASP LLM Top 10 Mapping</h3>
+                    <p>How Agent Guard rules map to OWASP LLM Top 10 vulnerabilities.</p>
+                    <a href="#">View Mapping →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">Agent<span>Guard</span></a>
+                    <p>Governance and visibility for the AI-powered enterprise.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <a href="/">For Developers</a>
+                    <a href="/enterprise">For Enterprise</a>
+                    <a href="https://github.com/MusashiMiyamoto1-cloud/agent-guard">GitHub</a>
+                    <a href="https://npmjs.com/package/@musashimiyamoto/agent-guard">npm</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="#resources">CISO Checklist</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">OWASP Mapping</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="https://x.com/MMiyamoto45652">Twitter/X</a>
+                    <a href="mailto:musashimiyamoto1@icloud.com">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 Musashi Labs. MIT License.</span>
+                <span>Also: <a href="https://musashimiyamoto1-cloud.github.io/tokenshrink/" style="color: #10b981;">TokenShrink</a></span>
+            </div>
+        </div>
+    </footer>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "775d666b10f94ecc95c628a26b9a70ff"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+</html>
